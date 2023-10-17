@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Height & Weight of Olympic Medalists",
+  "width": 800,
+  "height": 600,
+  "data": {
+    "url": "https://media.githubusercontent.com/media/ntran4324/fit3179assignment2/main/athlete_events.csv"
+  },
+  "params": [
+    {
+      "name": "medal_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "Gold", "Silver", "Bronze"],
+        "labels": ["Show All", "Gold", "Silver", "Bronze"],
+        "name": "Medal"
+      }
+    },
+    {
+      "name": "gender_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "M", "F"],
+        "labels": ["Show All", "Male", "Female"],
+        "name": "Gender"
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "medal_selection == null || datum.Medal == medal_selection"},
+    {"filter": "datum.Medal !== 'NA'"},
+    {"filter": "gender_selection == null || datum.Sex == gender_selection"},
+    {
+      "calculate": "datum.Medal === 'NA' ? 'No Medal' : datum.Medal",
+      "as": "Medal Type"
+    }
+  ],
+  "mark": "point",
+  "encoding": {
+    "y": {
+      "field": "Height",
+      "type": "quantitative",
+      "axis": {"title": "Height (cm)"},
+      "scale": {"domain": [130, 230]}
+    },
+    "x": {
+      "field": "Weight",
+      "type": "quantitative",
+      "axis": {"title": "Weight (kg)"},
+      "scale": {"domain": [20, 190]}
+    },
+    "color": {
+      "field": "Medal Type",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Gold", "Silver", "Bronze"],
+        "range": ["#FFD700", "#C0C0C0", "#CD7F32"]
+      }
+    }
+  },
+  "config": {}
+}

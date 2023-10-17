@@ -1,0 +1,29 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Top 10 Countries by Medals",
+  "data": {
+    "url": "https://media.githubusercontent.com/media/ntran4324/fit3179assignment2/main/athlete_events.csv"
+  },
+  "transform": [
+    {"filter": "datum.Medal !== 'NA'"},
+    {
+      "filter": "datum.Team === 'United States' || datum.Team ==='Soviet Union' || datum.Team ==='Germany' || datum.Team ==='Great Britain' || datum.Team ==='France' || datum.Team ==='Italy' || datum.Team ==='Sweden' || datum.Team ==='Canada' || datum.Team ==='Australia' || datum.Team ==='Hungary'"
+    },
+    {
+      "stack": "Medal",
+      "groupby": ["Team"],
+      "sort": [{"field": "Medal", "order": ["Gold", "Silver", "Bronze"]}],
+      "as": ["Gold", "Silver", "Bronze"]
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {"aggregate": "count", "field": "Medal", "title": "Number of Medals"},
+    "y": {"field": "Team", "sort": "-x", "title": "Country"},
+    "color": {
+      "field": "Medal",
+      "scale": {"range": ["#FFD700", "#C0C0C0", "#CD7F32"]}
+    }
+  },
+  "config": {}
+}

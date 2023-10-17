@@ -1,0 +1,25 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Age Distribution of Olympic Medalists",
+  "width": 800,
+  "height": 600,
+  "data": {
+    "url": "https://media.githubusercontent.com/media/ntran4324/fit3179assignment2/main/athlete_events.csv"
+  },
+  "transform": [{"filter": "datum.Medal !== 'NA'"}],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "bin": {"maxbins": 100},
+      "field": "Age",
+      "scale": {"domain": [10, 70]},
+      "title" : "Age"
+    },
+    "y": {
+      "aggregate": "count",
+      "title" : "Count",
+      "axis" : {"values" : [0,500,1000,1500,2000,2500,3000,3500]}
+      }
+  },
+  "config": {}
+}
