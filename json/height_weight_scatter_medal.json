@@ -30,10 +30,7 @@
     {"filter": "medal_selection == null || datum.Medal == medal_selection"},
     {"filter": "datum.Medal !== 'NA'"},
     {"filter": "gender_selection == null || datum.Sex == gender_selection"},
-    {
-      "calculate": "datum.Medal === 'NA' ? 'No Medal' : datum.Medal",
-      "as": "Medal Type"
-    }
+    {"filter": "datum.Season == 'Summer'"}
   ],
   "mark": "point",
   "encoding": {
@@ -50,7 +47,7 @@
       "scale": {"domain": [20, 190]}
     },
     "color": {
-      "field": "Medal Type",
+      "field": "Medal",
       "type": "nominal",
       "scale": {
         "domain": ["Gold", "Silver", "Bronze"],
