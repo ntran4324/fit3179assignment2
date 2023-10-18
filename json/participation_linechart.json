@@ -1,0 +1,48 @@
+{
+  "title": "Olympic Participation Over Time",
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "transform": [{"filter": "isValid(Year)"}],
+  "layer": [
+    {
+      "data": {
+        "url": "https://media.githubusercontent.com/media/ntran4324/fit3179assignment2/main/athlete_events.csv"
+      },
+      "transform": [{"filter": "datum.Season === 'Summer'"}],
+      "mark": {"type": "line", "point": true},
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "timeUnit": "year",
+          "title": "Year"
+        },
+        "y": {
+          "aggregate": "count",
+          "type": "quantitative",
+          "title": "Participating Athletes"
+        },
+        "color": {
+          "type": "nominal",
+          "field": "Sex",
+          "legend": {"labelExpr": "{'M': 'Male', 'F': 'Female'}[datum.Sex]"}
+        }
+      }
+    },
+    {
+      "data": {"values": [{}]},
+      "mark": {"type": "rule", "size": 2, "strokeDash": [2, 2]},
+      "encoding": {"x": {"datum": {"year": 1929}}, "color": {"value": "black"}}
+    },
+    {
+      "data": {"values": [{}]},
+      "mark": {"type": "rule", "size": 2, "strokeDash": [2, 2]},
+      "encoding": {"x": {"datum": {"year": 1956}}, "color": {"value": "black"}}
+    },
+    {
+      "data": {"values": [{}]},
+      "mark": {"type": "rule", "size": 2, "strokeDash": [2, 2]},
+      "encoding": {"x": {"datum": {"year": 1979}}, "color": {"value": "black"}}
+    }
+  ],
+  "config": {}
+}
