@@ -6,7 +6,20 @@
   "data": {
     "url": "https://media.githubusercontent.com/media/ntran4324/fit3179assignment2/main/athlete_events.csv"
   },
-  "transform": [{"filter": "datum.Medal !== 'NA'"}],
+  "params": [
+    {
+      "name": "gender_selection",
+      "bind": {
+        "input": "select",
+        "options": [null, "M", "F"],
+        "labels": ["Show All", "Male", "Female"],
+        "name": "Gender"
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.Medal !== 'NA'"},
+    {"filter": "gender_selection == null || datum.Sex == gender_selection"}],
   "mark": "bar",
   "encoding": {
     "x": {
