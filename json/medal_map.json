@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Total Olympic Medals",
+  "title": "Total Olympic Medals by Country",
   "width": 800,
   "height": 400,
   "data": {
@@ -42,10 +42,10 @@
               "url": "https://raw.githubusercontent.com/ntran4324/fit3179week9/main/olympics_medals_country_wise.csv"
             },
             "key": "countries",
-            "fields": ["total_total"]
+            "fields": ["summer_total"]
           }
         },
-        {"calculate": "datum.total_total", "as": "Total Medals"}
+        {"calculate": "datum.summer_total", "as": "Total Medals"}
       ],
       "mark": {"type": "geoshape", "stroke": "grey"},
       "encoding": {
@@ -54,7 +54,7 @@
           "type": "quantitative",
           "scale": {
             "scheme": "reds",
-            "domain": [50, 200, 500, 1000],
+            "domain": [10,50, 200, 500, 1000,2000],
             "type": "threshold"
           }
         },
