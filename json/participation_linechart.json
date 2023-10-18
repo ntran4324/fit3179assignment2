@@ -1,13 +1,18 @@
 {
   "title": "Olympic Participation Over Time",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "height": 400,
+  "width": 800,
   "transform": [{"filter": "isValid(Year)"}],
   "layer": [
     {
       "data": {
         "url": "https://media.githubusercontent.com/media/ntran4324/fit3179assignment2/main/athlete_events.csv"
       },
-      "transform": [{"filter": "datum.Season === 'Summer'"}],
+      "transform": [
+        {"filter": "datum.Season === 'Summer'"},
+        {"calculate": "{'M': 'Male', 'F': 'Female'}[datum.Sex]", "as": "Gender"}
+      ],
       "mark": {"type": "line", "point": true},
       "encoding": {
         "x": {
@@ -23,8 +28,11 @@
         },
         "color": {
           "type": "nominal",
-          "field": "Sex",
-          "legend": {"labelExpr": "{'M': 'Male', 'F': 'Female'}[datum.Sex]"}
+          "field": "Gender",
+          "scale": {
+            "domain": ["Female", "Male"],
+            "range": ["#c90076", "#2986cc"]
+          }
         }
       }
     },
@@ -35,13 +43,60 @@
     },
     {
       "data": {"values": [{}]},
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "xOffset": -50,
+        "yOffset": -75
+      },
+      "encoding": {
+        "x": {"datum": {"year": 1929}},
+        "text": {"value": ["Great", " Depression ", "(1929)"]}
+      }
+    },
+    {
+      "data": {"values": [{}]},
       "mark": {"type": "rule", "size": 2, "strokeDash": [2, 2]},
       "encoding": {"x": {"datum": {"year": 1956}}, "color": {"value": "black"}}
     },
     {
       "data": {"values": [{}]},
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "xOffset": -50,
+        "yOffset": -150
+      },
+      "encoding": {
+        "x": {"datum": {"year": 1956}},
+        "text": {"value": ["Hungarian", "Revolution", " (1956)"]}
+      }
+    },
+    {
+      "data": {"values": [{}]},
       "mark": {"type": "rule", "size": 2, "strokeDash": [2, 2]},
       "encoding": {"x": {"datum": {"year": 1979}}, "color": {"value": "black"}}
+    },
+    {
+      "data": {"values": [{}]},
+      "mark": {"type": "text", "align": "center", "xOffset": 50, "yOffset": 0},
+      "encoding": {
+        "x": {"datum": {"year": 1979}},
+        "text": {"value": ["Soviet Invasion", "of Afghanistan", " (1980)"]}
+      }
+    },
+    {
+      "data": {"values": [{}]},
+      "mark": {"type": "rule", "size": 2, "strokeDash": [2, 2]},
+      "encoding": {"x": {"datum": {"year": 1900}}, "color": {"value": "black"}}
+    },
+    {
+      "data": {"values": [{}]},
+      "mark": {"type": "text", "align": "center", "xOffset": 50, "yOffset": 0},
+      "encoding": {
+        "x": {"datum": {"year": 1900}},
+        "text": {"value": ["Women allowed", "to compete", " (1900)"]}
+      }
     }
   ],
   "config": {}
