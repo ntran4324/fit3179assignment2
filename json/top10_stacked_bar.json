@@ -6,23 +6,27 @@
   },
   "transform": [
     {"filter": "datum.Medal !== 'NA'"},
+    {"filter": "datum.Season == 'Summer'"},
     {
       "filter": "datum.Team === 'United States' || datum.Team ==='Soviet Union' || datum.Team ==='Germany' || datum.Team ==='Great Britain' || datum.Team ==='France' || datum.Team ==='Italy' || datum.Team ==='Sweden' || datum.Team ==='Canada' || datum.Team ==='Australia' || datum.Team ==='Hungary'"
-    },
-    {
-      "stack": "Medal",
-      "groupby": ["Team"],
-      "sort": [{"field": "Medal", "order": ["Gold", "Silver", "Bronze"]}],
-      "as": ["Gold", "Silver", "Bronze"]
     }
+    
   ],
-  "mark": "bar",
+  "mark": {"type": "bar","tooltip":true},
   "encoding": {
-    "x": {"aggregate": "count", "field": "Medal", "title": "Number of Medals"},
+    "x": {
+      "aggregate": "count", 
+      "field": "Medal", 
+      "title": "Count",
+      "type": "quantitative",
+      "sort": ["Gold","Silver","Bronze"]},
     "y": {"field": "Team", "sort": "-x", "title": "Country"},
     "color": {
       "field": "Medal",
-      "scale": {"range": ["#FFD700", "#C0C0C0", "#CD7F32"]}
+      "type": "nominal",
+      "scale": {
+        "domain":["Gold","Silver","Bronze"],
+        "range": ["#FFD700", "#C0C0C0","#CD7F32" ]}
     }
   },
   "config": {}
