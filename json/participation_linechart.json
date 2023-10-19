@@ -46,8 +46,8 @@
       "mark": {
         "type": "text",
         "align": "center",
-        "xOffset": -50,
-        "yOffset": -75
+        "xOffset": -30,
+        "yOffset": -100
       },
       "encoding": {
         "x": {"datum": {"year": 1929}},
@@ -64,7 +64,7 @@
       "mark": {
         "type": "text",
         "align": "center",
-        "xOffset": -50,
+        "xOffset": -35,
         "yOffset": -150
       },
       "encoding": {
@@ -79,7 +79,7 @@
     },
     {
       "data": {"values": [{}]},
-      "mark": {"type": "text", "align": "center", "xOffset": 50, "yOffset": 0},
+      "mark": {"type": "text", "align": "center", "xOffset": -40, "yOffset": 0},
       "encoding": {
         "x": {"datum": {"year": 1979}},
         "text": {"value": ["Soviet Invasion", "of Afghanistan", " (1980)"]}
@@ -92,7 +92,7 @@
     },
     {
       "data": {"values": [{}]},
-      "mark": {"type": "text", "align": "center", "xOffset": 50, "yOffset": 0},
+      "mark": {"type": "text", "align": "center", "xOffset": 45, "yOffset": -50},
       "encoding": {
         "x": {"datum": {"year": 1900}},
         "text": {"value": ["Women allowed", "to compete", " (1900)"]}
