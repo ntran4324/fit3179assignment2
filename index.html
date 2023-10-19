@@ -9,166 +9,30 @@
 <body class="bg-light">
   <div class="container text-center bg-primary-subtle">
     <h1>History of the Olympics</h1>
-  
-    <div class="container text-center">
-      <div class="row">
+    <div id="vis1"></div>
+    <div id="vis2"></div>
+    <div id="vis3"></div>
+    <div id="vis4"></div>
+    <div id="vis5"></div>
+    <div id="vis6"></div>
 
-        <div class="col">
-          <div id="vis1"></div>
-          <br>
-          <br>
-          <a>INSERT TEXT HERE</a>
-        </div>
 
-        <div class="col">
-          <a>insert another chart here</a>
-        </div>
-      </div>
-    </div>
-  
-
-  <br>
-<div class="container text-center">
-  <div id="vis2"></div>
-  <br>
-  <a>INSERT TEXT HERE</a>
-</div>
-</div>
   <script>
-    const spec1 = {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {"text": "Top 10 Countries By Medal Count"},
-  "data": {
-    "url": "https://raw.githubusercontent.com/ntran4324/fit3179week9/7bc3498f335dd482a7ebb2acd2a44df357958e37/top10.csv"
-  },
-  "params": [
-    {
-      "name": "medal_selection",
-      "bind": {
-        "input": "select",
-        "options": [
-          "total_total",
-          "total_gold",
-          "total_silver",
-          "total_bronze"
-        ],
-        "labels": [
-          "Total Medals",
-          "Gold Medals",
-          "Silver Medals",
-          "Bronze Medals"
-        ],
-        "name": "Medal Type"
-      }
-    }
-  ],
-  "transform": [
-    {"calculate": "datum[medal_selection]", "as": "selected_medal_type"}
-  ],
-  "layer": [
-    {
-      "mark": "bar",
-      "encoding": {
-        "x": {
-          "field": "selected_medal_type",
-          "type": "quantitative",
-          "title": "Number Of Medals"
-        },
-        "y": {
-          "field": "countries",
-          "type": "nominal",
-          "sort": {"field": "selected_medal_type", "order": "descending"},
-          "title": "Country"
-        }
-      }
-    },
-    {
-      "mark": {"type": "text", "align": "right", "dx": -5},
-      "encoding": {
-        "x": {"field": "selected_medal_type", "type": "quantitative"},
-        "y": {
-          "field": "countries",
-          "type": "nominal",
-          "sort": {"field": "selected_medal_type", "order": "descending"}
-        },
-        "text": {"field": "selected_medal_type", "type": "quantitative"},
-        "color": {"value": "white"}
-      }
-    }
-  ],
-  "config": {}
-};
-    vegaEmbed("#vis1", spec1, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+    const spec1 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/age_dist_medal.json";
+    const spec2 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/height_weight_scatter_medal.json";
+    const spec3 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/medal_map.json";
+    const spec4 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/participation_linechart.json";
+    const spec5 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/top10_stacked_bar.json";
+    const spec6 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/medal_proportion.json";
 
-    const spec2 = {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Total Olympic Medals",
-  "width": 800,
-  "height": 400,
-  "data": {
-    "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
-    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
-  },
-  "projection": {"type": "equalEarth"},
-  "layer": [
-    {
-      "transform": [
-        {
-          "calculate": "'Data is not available in ' + datum.properties.NAME",
-          "as": "note"
-        }
-      ],
-      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"},
-      "encoding": {"tooltip": {"field": "note"}}
-    },
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
-        "format": {"type": "topojson", "feature": "oceans"}
-      },
-      "mark": {"type": "geoshape", "fill": "skyblue"}
-    },
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
-        "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
-      },
-      "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
-    },
-    {
-      "transform": [
-        {
-          "lookup": "properties.NAME",
-          "from": {
-            "data": {
-              "url": "https://raw.githubusercontent.com/ntran4324/fit3179week9/main/olympics_medals_country_wise.csv"
-            },
-            "key": "countries",
-            "fields": ["total_total"]
-          }
-        },
-        {
-          "calculate": "datum.total_total || datum.total_total+0.1",
-          "as": "Total Medals"
-        }
-      ],
-      "mark": {"type": "geoshape", "stroke": "grey"},
-      "encoding": {
-        "color": {
-          "field": "Total Medals",
-          "type": "quantitative",
-          "scale": {"scheme": "reds"}
-        },
-        "tooltip": [
-          {"field": "properties.NAME", "type": "nominal", "title": "counties"},
-          {"field": "Total Medals", "type": "quantitative"}
-        ]
-      }
-    }
-  ],
-  "config": {}
-};
+
+
+    vegaEmbed("#vis1", spec1, {mode: "vega-lite"}).then(console.log).catch(console.warn);
     vegaEmbed("#vis2", spec2, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+    vegaEmbed("#vis3", spec3, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+    vegaEmbed("#vis4", spec4, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+    vegaEmbed("#vis5", spec5, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+    vegaEmbed("#vis6", spec6, {mode: "vega-lite"}).then(console.log).catch(console.warn);
   </script>
 </body>
 
