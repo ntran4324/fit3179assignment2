@@ -1,0 +1,30 @@
+{
+  "title": "Proportion of Participants with Medals",
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A bar chart that sorts the y-values by the x-values.",
+  "data": {
+    "url": "https://media.githubusercontent.com/media/ntran4324/fit3179assignment2/main/athlete_events.csv"
+  },
+  "transform": [
+    {"filter": "datum.Season == 'Summer'"},
+    {
+      "filter": "datum.Sport === 'Athletics' || datum.Sport ==='Gymnastics' || datum.Sport ==='Swimming' || datum.Sport ==='Shooting' || datum.Sport ==='Cycling' || datum.Sport ==='Fencing' || datum.Sport ==='Rowing' || datum.Sport ==='Wrestling' || datum.Sport ==='Football' || datum.Sport ==='Sailing'"
+    },
+    {
+      "calculate": "(datum.Medal !== 'NA') ? 'Medal' : 'No Medal'",
+      "as": "Result"
+    }
+  ],
+  "height": {"step": 17},
+  "mark": {"type": "bar", "tooltip": true},
+  "encoding": {
+    "y": {"field": "Sport", "type": "nominal", "sort": "-x"},
+    "x": {"title": "Participants", "aggregate": "count"},
+    "color": {
+      "field": "Result",
+      "type": "nominal",
+      "scale": {"domain": ["Medal", "No Medal"]}
+    }
+  },
+  "config": {}
+}
