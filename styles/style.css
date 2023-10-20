@@ -1,0 +1,25 @@
+.container-fluid {
+    width: 70%; /* Adjust this value to set the container width as a percentage of the screen */
+    max-width: none; /* Remove the maximum width constraint */
+    background-color: aliceblue;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+  }
+body{
+    background-image:url("../img/background.jpg");
+    background-size: cover;
+}
+.gold{
+    color: gold;
+    background-color: black;
+}
+.middle-text{
+    text-align:center;
+}
+p{
+    font-weight: 300;
+}
+#vis1,#vis2,#vis3,#vis4,#vis5,#vis6{
+    width: 100%;
+}
