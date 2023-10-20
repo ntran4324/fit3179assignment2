@@ -1,6 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Top 10 Countries by Medals",
+  "width":"container",
+  "height":300,
   "data": {
     "url": "https://media.githubusercontent.com/media/ntran4324/fit3179assignment2/main/athlete_events.csv"
   },
