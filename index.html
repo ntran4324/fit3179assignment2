@@ -1,44 +1,199 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.15.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.22.2"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
-<body class="bg-light">
-  <div class="container text-center bg-primary-subtle">
-    <h1>History of the Olympics</h1>
-    <div id="vis1"></div>
-    <div id="vis2"></div>
-    <div id="vis3"></div>
-    <div id="vis4"></div>
-    <div id="vis5"></div>
-    <div id="vis6"></div>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>Olympics Visualisation</title>
 
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="styles/style.css">
 
+	<script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+  	<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.15.0"></script>
+  	<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.22.2"></script>
 
+  </head>
+  <body>
 
-    
-  <script>
-    const spec1 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/age_dist_medal.json";
-    const spec2 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/height_weight_scatter_medal.json";
-    const spec3 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/medal_map.json";
-    const spec4 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/participation_linechart.json";
-    const spec5 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/top10_stacked_bar.json";
-    const spec6 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/medal_proportion.json";
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>
+				How Difficult Are The Summer Olympics?
+			</h1>
+			
+			<p>
+				This data visualization provides a thorough examination of the journey to becoming an Olympic medalist.
+				 It delves into various facets, starting with the geographic distribution of medalists across different regions.
+				  Next, it explores the physical attributes of these exceptional athletes, including their gender, weight, height, and age.
 
+				Furthermore, this visualization illuminates a critical perspective by illustrating the proportion of medalists versus non-medalists.
+				 This serves as a stark reminder of the remarkable dedication and effort required to attain Olympic glory.
 
+				
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h3 class="middle-text">
+				Countries
+			</h3>
+			<div class="row">
+				<div class="col-md-12">
+					<div id="vis3"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div id="vis5"></div>
 
-    vegaEmbed("#vis1", spec1, {mode: "vega-lite"}).then(console.log).catch(console.warn);
-    vegaEmbed("#vis2", spec2, {mode: "vega-lite"}).then(console.log).catch(console.warn);
-    vegaEmbed("#vis3", spec3, {mode: "vega-lite"}).then(console.log).catch(console.warn);
-    vegaEmbed("#vis4", spec4, {mode: "vega-lite"}).then(console.log).catch(console.warn);
-    vegaEmbed("#vis5", spec5, {mode: "vega-lite"}).then(console.log).catch(console.warn);
-    vegaEmbed("#vis6", spec6, {mode: "vega-lite"}).then(console.log).catch(console.warn);
-  </script>
-</body>
+				</div>
+				<div class="col-md-6">
+					<p>
 
+						The choropleth world map provides a visual representation of Olympic medal distribution across different countries.
+						 Notably, the <strong>United States</strong> emerges as a <strong>dominant</strong> force,
+						  showcasing an impressive tally of medals that surpasses many other nations.
+						   This map vividly illustrates the global reach of the Olympic Games 
+						   and serves as a testament to the widespread pursuit of athletic excellence.
+						   </p>
+						   <p>
+						    Shifting our focus to the stacked bar chart, it offers a detailed breakdown of the types of medals won by the top 10 countries.
+							 What's particularly striking is the substantial proportion of <strong class="gold">gold</strong> medals, 
+							 indicating a consistent trend of top-tier performance across a diverse range of sporting events. 
+							 This observation sheds light on the United States' extraordinary commitment to achieving the 
+							 highest level of sporting success, solidifying their position as a leading contender on the global Olympic stage.					</p>
+							</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h3 class="middle-text">
+				Who
+			</h3>
+			<div class="row">
+				<div class="col-md-12">
+					<div id="vis4"></div>
+					<p>
+						The participation timeline line chart provides a compelling historical narrative of Olympic involvement,
+						 with two distinct lines representing male and female athletes. Notably, this visualization
+						  unveils significant drops in participation during pivotal world events,
+						   such as the Great Depression in 1929, the Hungarian Revolution in 1956,
+						    and the Soviet invasion of Afghanistan in 1980. 
+							These sharp declines serve as reminders of how global circumstances can profoundly
+							 impact an athlete's ability to compete at the Olympic level and hence receiving a medal. 
+					</p>
+					<p>
 
+							 Additionally, the chart highlights a remarkable evolution in gender representation over time. 
+							 Initially dominated by male athletes, the composition has gradually shifted, 
+							 nearing a balanced one-to-one ratio between male and female participants in recent years. 
+							 This transformative trend not only reflects a more inclusive and equitable approach to Olympic 
+							 competition but also celebrates the growing achievements and contributions of 
+							 female athletes on the world stage.
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div id="vis1"></div>					
+					
+				</div>
+				<div class="col-md-6">
+					<div id="vis2"></div>	
+				
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<p>
+						The age distribution histogram for Olympic medalists, offers a fascinating glimpse into
+						 the demographic trends of high-achieving athletes. Regardless of gender,
+						  the majority of medalists fall within the age bracket of 20 to 35 years old. 
+						  This commonality suggests a universal peak in athletic performance during this critical 
+						  period of physical and competitive prowess. 
+						 </p>
+						 <p>
+						  However, when we delve into the gender-specific breakdown, 
+						  an intriguing nuance emerges. 
+						  Male medalists closely mirror the overall trend, with their optimal performance years aligning with
+						   the 20-35 age range. In contrast, female medalists exhibit a slightly narrower ideal 
+						   age range of 20 to 30, indicating a preference for younger athletes in women's Olympic events.
+						   This observation underscores the unique dynamics at play within each gender category and offers
+						    valuable insights into the evolving landscape of Olympic achievement across different age groups and genders.
+											</p>
+				</div>
+				<div class="col-md-6">
+					<p>
+						The scatter plot of Olympic medalists' weight and height reveals that,
+						 in the broader context of Olympic competition, these physical attributes
+						  may not be the sole determinants of success. However, it's important to note that the impact
+						   of height and weight varies across different sports. When filtered by gender, the plot
+						    distinctly shows that males tend to occupy the top-right quadrant, favoring taller and heavier athletes,
+							 while females are predominantly in the bottom-left quadrant, suggesting a preference for athletes with
+							  slightly smaller statures.
+					</p>
+
+					<p>Furthermore, this observation highlights the importance of considering a diverse range of skills,
+						 techniques, and training regimens that contribute to an athlete's success, emphasizing that while
+						  height and weight may play a role, they are just one part of a multifaceted equation in the pursuit
+						   of Olympic excellence.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h3 class="middle-text">
+				Sport of choice
+			</h3>
+			<div class="row">
+				<div class="col-md-6">
+					<div id="vis6"></div>
+				</div>
+				<div class="col-md-6">
+					<p>
+
+					The stacked bar chart portraying the top 10 most popular sports offers a captivating
+					 insight into the dynamics of athletic participation. Strikingly, it becomes evident
+					  that the sports with lower entry barriers in terms of equipment and cost tend to attract a
+					   significantly larger number of participants. However, this popularity comes at a price—the immense
+					    competition within these sports is palpable. The chart vividly demonstrates that in these accessible sports,
+						 the ratio of medalists to non-medalists is notably high. This underscores the fierce competitiveness and the
+						  exceptional drive that athletes exhibit, highlighting their unwavering determination to achieve Olympic recognition
+						   even in the face of formidable odds.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+
+	<script>
+		const spec1 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/age_dist_medal.json";
+		const spec2 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/height_weight_scatter_medal.json";
+		const spec3 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/medal_map.json";
+		const spec4 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/participation_linechart.json";
+		const spec5 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/top10_stacked_bar.json";
+		const spec6 = "https://raw.githubusercontent.com/ntran4324/fit3179assignment2/main/json/medal_proportion.json";
+	
+	
+	
+		vegaEmbed("#vis1", spec1, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+		vegaEmbed("#vis2", spec2, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+		vegaEmbed("#vis3", spec3, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+		vegaEmbed("#vis4", spec4, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+		vegaEmbed("#vis5", spec5, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+		vegaEmbed("#vis6", spec6, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+	  </script>
+  </body>
 </html>
