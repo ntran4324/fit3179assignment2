@@ -1,5 +1,5 @@
 {
-  "title": "Proportion of Participants with Medals",
+  "title": "Medal Distribution For Top 10 Sports",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "A bar chart that sorts the y-values by the x-values.",
   "data": {
