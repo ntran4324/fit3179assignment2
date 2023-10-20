@@ -2,6 +2,8 @@
   "title": "Medal Distribution For Top 10 Sports",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "A bar chart that sorts the y-values by the x-values.",
+  "width":"container",
+  "height":300,
   "data": {
     "url": "https://media.githubusercontent.com/media/ntran4324/fit3179assignment2/main/athlete_events.csv"
   },
@@ -15,7 +17,6 @@
       "as": "Result"
     }
   ],
-  "height": {"step": 17},
   "mark": {"type": "bar", "tooltip": true},
   "encoding": {
     "y": {"field": "Sport", "type": "nominal", "sort": "-x"},
