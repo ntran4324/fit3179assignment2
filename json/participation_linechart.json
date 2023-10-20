@@ -1,8 +1,6 @@
 {
   "title": "Olympic Participation Over Time",
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "height": 400,
-  "width": 800,
   "transform": [{"filter": "isValid(Year)"}],
   "layer": [
     {
