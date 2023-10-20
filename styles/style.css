@@ -38,6 +38,14 @@ strong{
 }
 
 footer{
-    text-align: center;
     padding: auto;
+    text-align: center;
+}
+
+.female{
+    color:#c90076
+}
+
+.male{
+    color:#2986cc
 }
